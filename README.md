@@ -87,14 +87,3 @@ La salida final se registra por `logging` (nivel `INFO`).
 - El sistema **no sustituye** el análisis de un profesional del derecho ni constituye asesoría legal.
 - El proyecto está pensado como **ejercicio educativo/exploratorio** sobre el uso de IA en contextos jurídicos.
 
-### Ideas para compartir en LinkedIn
-
-Algunos ángulos que puedes mencionar en tu post:
-
-- **IA en dominios sensibles**: cómo cambia la conversación cuando entramos en derecho, sanidad, etc.
-- **Transparencia y estructura**: usar JSON y flujos tipo grafo para hacer más auditables las respuestas de la IA.
-- **Rol del humano**: por qué incluso con buenas herramientas, el criterio y la responsabilidad siguen siendo humanos.
-- **Limitaciones actuales**: sesgos de los modelos, riesgo de alucinaciones y necesidad de marcos éticos/regulatorios.
-
-# divorce_judge
-An example of how to do a divorce judge
