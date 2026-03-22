@@ -1,89 +1,87 @@
 ## Divorce Judge (LangGraph)
 
-Juez sencillo (no vinculante) para analizar sentencias de divorcio en PDF usando modelos de lenguaje (OpenAI u Ollama) y un flujo orquestado con LangGraph.
+Simple (non-binding) judge to analyze divorce judgments in PDF using language models (OpenAI or Ollama) and an orchestrated flow with LangGraph.
 
-La idea es explorar **cómo la IA puede apoyar en dominios sensibles como el derecho**, generando resúmenes estructurados y evaluaciones de sentencias, siempre con un fuerte **disclaimer**: esto **no es asesoría legal** ni sustituye el criterio profesional humano.
+The idea is to explore how AI can support sensitive domains like law by producing structured summaries and evaluations of judgments, always with a strong disclaimer: this is not legal advice and does not replace professional human judgment.
 
-### Requisitos
+### Requirements
 
 - Python 3.10+
-- `virtualenv` (opcional pero recomendado)
+- `virtualenv` (optional but recommended)
 
-Dependencias principales (ya listadas en `requirements.txt`):
+Main dependencies (listed in `requirements.txt`):
 
 - `langchain`, `langgraph`
 - `langchain-openai`, `langchain-ollama`
 - `pydantic`, `python-dotenv`
 - `pypdf`
 
-### Instalación
+### Installation
 
 ```bash
 git clone https://github.com/franciscosanchezoliver/divorce_judge.git
 cd divorce_judge
 
 python -m venv .venv
-source .venv/bin/activate  # En Windows: .venv\Scripts\activate
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 pip install -r requirements.txt
 ```
 
-### Configuración de variables de entorno
+### Environment variables
 
-Para usar modelos de OpenAI:
+To use OpenAI models:
 
 ```bash
-export OPENAI_API_KEY="tu_api_key"
+export OPENAI_API_KEY="your_api_key"
 ```
 
-Para usar modelos de Ollama:
+To use Ollama models:
 
-- Tener `ollama` instalado y corriendo localmente.
-- Tener descargado el modelo que vayas a usar (por ejemplo `qwen2.5:3b`).
+- Have `ollama` installed and running locally.
+- Download the model you want to use (for example `qwen2.5:3b`).
 
-Puedes usar un fichero `.env` en la raíz del proyecto (está ignorado en `.gitignore`) y definir ahí tus claves:
+You can use a `.env` file in the project root (it's in `.gitignore`) and set your keys there:
 
 ```env
-OPENAI_API_KEY=tu_api_key
+OPENAI_API_KEY=your_api_key
 ```
 
-### Uso
+### Usage
 
-El punto de entrada es `src/main.py`. Ejemplo:
+The entry point is `src/main.py`. Example:
 
 ```bash
 python -m src.main \
-    --file /ruta/a/tu/sentencia.pdf \
+    --file /path/to/your/judgment.pdf \
     --provider ollama \
     --model qwen2.5:3b
 ```
 
-O con OpenAI:
+Or with OpenAI:
 
 ```bash
 python -m src.main \
-    --file /ruta/a/tu/sentencia.pdf \
+    --file /path/to/your/judgment.pdf \
     --provider openai \
     --model gpt-4o-mini
 ```
 
-El programa:
+The program:
 
-- Convierte el PDF a texto.
-- Extrae hechos relevantes (partes, custodia, pensiones, etc.).
-- Evalúa la coherencia y completitud de la sentencia.
-- Genera un JSON estructurado con:
-  - `resumen`
-  - `hechos_extraidos`
-  - `evaluacion`
-  - `fallo_simulado`
-  - `disclaimer`
+- Converts the PDF to text.
+- Extracts relevant facts (parties, custody, alimony, etc.).
+- Evaluates the coherence and completeness of the judgment.
+- Generates a structured JSON with:
+  - `summary`
+  - `extracted_facts`
+  - `evaluation`
 
-La salida final se registra por `logging` (nivel `INFO`).
+Final output is logged using `logging` (level `INFO`).
 
-### Limitaciones y aviso legal
+### Limitations and legal notice
 
-- El modelo puede cometer errores, alucinar datos o pasar por alto información relevante.
-- El sistema **no sustituye** el análisis de un profesional del derecho ni constituye asesoría legal.
-- El proyecto está pensado como **ejercicio educativo/exploratorio** sobre el uso de IA en contextos jurídicos.
+- The model can make mistakes, hallucinate data, or miss relevant information.
+- This system does not replace a professional legal analysis nor constitute legal advice.
+- The project is intended as an educational/exploratory exercise on using AI in legal contexts.
 

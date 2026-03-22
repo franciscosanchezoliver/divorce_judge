@@ -15,7 +15,6 @@ langchain-ollama
 # Agents with LangGraph
 langgraph>=0.2.0
 
-# Jupyter tutorial
 jupyter>=1.0.0
 ipykernel>=6.0.0
 
